@@ -32,6 +32,9 @@ public class DIApp {
 
 
 
+String det = jjdbc.getdata();
+
+         System.out.println(det);
 
         //Get bean from controller
     }

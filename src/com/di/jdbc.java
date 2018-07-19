@@ -1,6 +1,9 @@
 
 package com.di;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -27,22 +30,51 @@ public class jdbc {
     static int re_new = 0;
 
     private Connection conn;
-public void getUserData() throws SQLException {
-     conn = dataSource.getConnection();
-    String preparedQuery = "SELECT * FROM details  ;";
+
+    private JdbcTemplate jdbcTemplate;
+
+
+
+    public void getUserData() throws SQLException {
+        conn = dataSource.getConnection();
+        String preparedQuery = "SELECT * FROM details  ;";
 
         PreparedStatement stmt = conn.prepareStatement(preparedQuery);
 
 
         ResultSet r = stmt.executeQuery();
-        while (r.next())
-        {
+        while (r.next()) {
             System.out.println(r.getString("username"));
         }
 
 
-}
 
+    }
+
+
+
+    public  String getdata()
+    {
+        //for single value
+        return  jdbcTemplate.queryForObject("select username from details",new Object[]{},String.class);
+    }
+
+    public  String getSaradata()
+    {
+        return  jdbcTemplate.queryForObject("select * from details",RowMapper<details>);
+    }
+
+
+
+
+
+    @Autowired
+    public void setDataSource(DataSource dataSource) {
+
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+
+        this.dataSource = dataSource;
+    }
 
 //    public static void main(String[] args) {
 //        Connection con = null;
