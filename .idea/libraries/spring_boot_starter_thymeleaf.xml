@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="spring-boot-starter-thymeleaf">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/Downloads/spring-boot-starter-thymeleaf-1.5.9.RELEASE.jar!/META-INF/maven/org.springframework.boot/spring-boot-starter-thymeleaf" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/spring-boot-starter-thymeleaf-1.5.9.RELEASE.jar!/META-INF/maven/org.springframework.boot/spring-boot-starter-thymeleaf" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/Downloads/spring-boot-starter-thymeleaf-1.5.9.RELEASE.jar!/META-INF/maven/org.springframework.boot/spring-boot-starter-thymeleaf" />
+    </JAVADOC>
+    <NATIVE>
+      <root url="jar://$USER_HOME$/Downloads/spring-boot-starter-thymeleaf-1.5.9.RELEASE.jar!/META-INF/maven/org.springframework.boot/spring-boot-starter-thymeleaf" />
+    </NATIVE>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Downloads/spring-boot-starter-thymeleaf-1.5.9.RELEASE.jar!/META-INF/maven/org.springframework.boot/spring-boot-starter-thymeleaf" />
+    </SOURCES>
+    <jarDirectory url="jar://$USER_HOME$/Downloads/spring-boot-starter-thymeleaf-1.5.9.RELEASE.jar!/META-INF/maven/org.springframework.boot/spring-boot-starter-thymeleaf" recursive="false" />
+    <jarDirectory url="jar://$USER_HOME$/Downloads/spring-boot-starter-thymeleaf-1.5.9.RELEASE.jar!/META-INF/maven/org.springframework.boot/spring-boot-starter-thymeleaf" recursive="false" type="SOURCES" />
+  </library>
+</component>
