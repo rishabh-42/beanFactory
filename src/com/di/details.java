@@ -6,6 +6,14 @@ public class details {
     private  int age;
     private  String gender;
 
+
+    public details(String username, int age, String gender) {
+        this.username=username;
+        this.age=age;
+        this.gender=gender;
+
+
+    }
     public String getGender() {
         return gender;
     }

@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 
 @Component("jdbc")
@@ -28,11 +30,11 @@ public class jdbc {
     private DataSource dataSource;
 
     static int re_new = 0;
+    private  static final detailsRowMapper nameKuchBhideDe =new detailsRowMapper();
 
     private Connection conn;
 
     private JdbcTemplate jdbcTemplate;
-
 
 
     public void getUserData() throws SQLException {
@@ -48,24 +50,35 @@ public class jdbc {
         }
 
 
+    }
 
+//
+//    public String getdata() {
+//        //for single value
+//        return jdbcTemplate.queryForObject("select username from details", new Object[]{}, String.class);
+//    }
+
+    public Collection<details> getSaradata() {
+        return jdbcTemplate.query("select * from details",nameKuchBhideDe);
     }
 
 
+    //row mapper inner class
+    public static class detailsRowMapper implements RowMapper<details> {
 
-    public  String getdata()
-    {
-        //for single value
-        return  jdbcTemplate.queryForObject("select username from details",new Object[]{},String.class);
+
+        @Override
+        public details mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+
+            String username = rs.getString("username");
+            int age = rs.getInt("age");
+            String gender = rs.getString("gender");
+
+
+            return new details(username,age,gender);
+        }
     }
-
-    public  String getSaradata()
-    {
-        return  jdbcTemplate.queryForObject("select * from details",RowMapper<details>);
-    }
-
-
-
 
 
     @Autowired

@@ -6,6 +6,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.Iterator;
 
 public class DIApp {
 
@@ -28,13 +30,17 @@ public class DIApp {
          jdbc jjdbc = (jdbc) context.getBean("jdbc");
 
          jjdbc.getUserData();
+         Collection<details> de = jjdbc.getSaradata();
+
+         Iterator<details> i = de.iterator();
 
 
 
 
-String det = jjdbc.getdata();
 
-         System.out.println(det);
+//
+//String det = jjdbc.getdata();
+
 
         //Get bean from controller
     }
