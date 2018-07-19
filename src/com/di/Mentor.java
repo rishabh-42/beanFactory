@@ -52,7 +52,16 @@ public class Mentor implements IMentor, ApplicationEventPublisherAware {
         System.out.println("This is overriden method in class");
 
          NewEvent newevent = new NewEvent(this);
-        publisher.publishEvent(newevent);
+
+         new Thread(()->
+         {
+             System.out.println("New thread started");
+             publisher.publishEvent(newevent);
+
+
+
+         }
+         ).start();
 
        this.dependent.getData();
         list.forEach(x-> System.out.println(x));
