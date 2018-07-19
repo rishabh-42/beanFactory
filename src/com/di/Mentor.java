@@ -3,11 +3,18 @@ package com.di;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationEventPublisherAware;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
+public class Mentor implements IMentor, ApplicationEventPublisherAware {
 
-public class Mentor implements IMentor {
+    private ApplicationEventPublisher publisher;
+
+
 
     private String name;
 
@@ -30,7 +37,7 @@ public class Mentor implements IMentor {
     }
 
 
-    @Required
+
     @Autowired
     @Value("arpit")
     public void setName(String name) {
@@ -44,8 +51,12 @@ public class Mentor implements IMentor {
     public void getData() {
         System.out.println("This is overriden method in class");
 
+         NewEvent newevent = new NewEvent(this);
+        publisher.publishEvent(newevent);
+
        this.dependent.getData();
         list.forEach(x-> System.out.println(x));
+
     }
 
 
@@ -54,5 +65,11 @@ public class Mentor implements IMentor {
     }
 
 
+    @Override
+    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
+        publisher= applicationEventPublisher;
+
+
+    }
 }
 
