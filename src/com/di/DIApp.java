@@ -11,9 +11,9 @@ public class DIApp {
 
 
          // Initialise Context
-       // ApplicationContext context = new ClassPathXmlApplicationContext("com/di/beanConfiguration.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("com/di/beanConfiguration.xml");
 
-         ApplicationContext context = new AnnotationConfigApplicationContext(Class.class);// Class-> @configuration wali class
+//         ApplicationContext context = new AnnotationConfigApplicationContext(Class.class);// Class-> @configuration wali class
 
 
 
@@ -21,8 +21,6 @@ public class DIApp {
         Mentor mentor = (Mentor) context.getBean("mentor");
         mentor.getData();
        // ((ClassPathXmlApplicationContext) context).close();
-
-
 
 
 
