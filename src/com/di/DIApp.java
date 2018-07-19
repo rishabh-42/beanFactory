@@ -32,7 +32,10 @@ public class DIApp {
          jjdbc.getUserData();
          Collection<details> de = jjdbc.getSaradata();
 
-         Iterator<details> i = de.iterator();
+         de.forEach((x)->{
+             System.out.println(x);
+
+         });
 
 
 
