@@ -10,3 +10,4 @@ public class newEventListner implements ApplicationListener<NewEvent> {
         System.out.println("i'm from new Event : " + event.toString());
     }
 }
+
