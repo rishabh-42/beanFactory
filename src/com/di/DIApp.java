@@ -13,6 +13,7 @@ public class DIApp {
          // Initialise Context
         ApplicationContext context = new ClassPathXmlApplicationContext("com/di/beanConfiguration.xml");
 
+        ((ClassPathXmlApplicationContext) context).start();
 //         ApplicationContext context = new AnnotationConfigApplicationContext(Class.class);// Class-> @configuration wali class
 
 

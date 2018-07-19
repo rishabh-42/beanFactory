@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class myContextListner implements ApplicationListener<ContextStartedEvent> {
     @Override
     public void onApplicationEvent(ContextStartedEvent ce) {
-        
+        System.out.println(ce);
 
 
 
