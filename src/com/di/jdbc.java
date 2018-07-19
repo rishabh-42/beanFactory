@@ -1,6 +1,7 @@
 
 package com.di;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.awt.*;
@@ -10,6 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@Component("jdbc")
 public class jdbc {
 
     /*
@@ -25,69 +27,78 @@ public class jdbc {
     static int re_new = 0;
 
     private Connection conn;
-public String getUserData() throws SQLException {
+public void getUserData() throws SQLException {
      conn = dataSource.getConnection();
+    String preparedQuery = "SELECT * FROM details  ;";
 
-     return "ok";
-}
-
-
-    public static void main(String[] args) {
-        Connection con = null;
-//
-
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver"); // register the driver
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/trig","root","password");
-
-
-        // Callable
-
-        CallableStatement cs = con.prepareCall("call insert_data('Lohit','22','Male')");
-        CallableStatement cs1 = con.prepareCall("call insert_data('Rishabh','20','Male')");
-        CallableStatement cs2 = con.prepareCall("call insert_data('Shubham','18','Male')");
-
-
-        cs.execute();
-        cs1.execute();
-        cs2.execute();
-
-
-        // PreparedStatement
-        String preparedQuery = "SELECT * FROM details  ;";
-
-        PreparedStatement stmt = con.prepareStatement(preparedQuery);
+        PreparedStatement stmt = conn.prepareStatement(preparedQuery);
 
 
         ResultSet r = stmt.executeQuery();
-        HashMap<String, ArrayList> hm = new HashMap<>();
-
-
-        while (r.next()) {
-            ArrayList<String> al = new ArrayList();
-            al.add(r.getString("age"));
-            // System.out.println(r.getString("username"));
-            hm.put(r.getString("username"), al);
-
-
+        while (r.next())
+        {
+            System.out.println(r.getString("username"));
         }
 
-        hm.forEach((x, y) -> {
-            System.out.println(x);
-            y.forEach(z -> System.out.println(z));
 
-        });
-
-
-    } catch(
-    SQLException e)
-
-    {
-        e.printStackTrace();
-    }
 }
+
+
+//    public static void main(String[] args) {
+//        Connection con = null;
+////
+//
+////        try {
+////            Class.forName("com.mysql.jdbc.Driver"); // register the driver
+////        } catch (ClassNotFoundException e) {
+////            e.printStackTrace();
+////        }
+////        try {
+////            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/trig","root","password");
+//
+//
+//        // Callable
+//
+//        CallableStatement cs = con.prepareCall("call insert_data('Lohit','22','Male')");
+//        CallableStatement cs1 = con.prepareCall("call insert_data('Rishabh','20','Male')");
+//        CallableStatement cs2 = con.prepareCall("call insert_data('Shubham','18','Male')");
+//
+//
+//        cs.execute();
+//        cs1.execute();
+//        cs2.execute();
+//
+//
+//        // PreparedStatement
+//        String preparedQuery = "SELECT * FROM details  ;";
+//
+//        PreparedStatement stmt = con.prepareStatement(preparedQuery);
+//
+//
+//        ResultSet r = stmt.executeQuery();
+//        HashMap<String, ArrayList> hm = new HashMap<>();
+//
+//
+//        while (r.next()) {
+//            ArrayList<String> al = new ArrayList();
+//            al.add(r.getString("age"));
+//            // System.out.println(r.getString("username"));
+//            hm.put(r.getString("username"), al);
+//
+//
+//        }
+//
+//        hm.forEach((x, y) -> {
+//            System.out.println(x);
+//            y.forEach(z -> System.out.println(z));
+//
+//        });
+//
+//
+//    } catch(
+//    SQLException e)
+//
+//    {
+//        e.printStackTrace();
+//    }
 }

@@ -5,9 +5,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.sql.SQLException;
+
 public class DIApp {
 
-     public static void main(String[] args) {
+     public static void main(String[] args) throws SQLException {
 
 
          // Initialise Context
@@ -23,6 +25,9 @@ public class DIApp {
         mentor.getData();
        // ((ClassPathXmlApplicationContext) context).close();
 
+         jdbc jjdbc = (jdbc) context.getBean("jdbc");
+
+         jjdbc.getUserData();
 
 
 
